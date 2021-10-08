@@ -3,15 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 const Statistics = (props) => {
+  
   return (
     <>
-      <p>good {props.good}</p>
-      <p>neutral {props.neutral}</p>
-      <p>bad {props.bad}</p>
-      <p>all { props.all }</p>
-      <p>average {props.average}</p>
-      <p>positive {props.positive} %</p>
+      <Statistic text="good" value={props.good} />
+      <Statistic text="neutral" value={props.neutral} />
+      <Statistic text="bad" value={props.bad} />
+      <Statistic text="all" value={props.all} />
+      <Statistic text="average" value={props.average} />
+      <Statistic text="positive" value={props.positive} />
     </>
+  )
+}
+
+const Statistic = (props) => {
+  return <p>{props.text} {props.value} {props.text === "positive" ? "%" : ""}</p>
+}
+
+const Button = (props) => {
+  return (
+    <button onClick={props.handleClick}>
+      {props.text}
+    </button>
   )
 }
 
@@ -41,13 +54,13 @@ const App = () => {
   return (
     <div>
       <h1>give feedback</h1>
-      <button onClick={handleClickGood}>good</button>
-      <button onClick={handleClickNeutral}>neutral</button>
-      <button onClick={handleClickBad}>bad</button>
+      <Button handleClick={handleClickGood} text="good" />
+      <Button handleClick={handleClickNeutral} text="neutral" />
+      <Button handleClick={handleClickBad} text="bad" />
 
       <h1>Statistics</h1>
       {all === 0
-        ? "No feedback given"
+        ? <p>No feedback given</p>
         : <Statistics
             good={good}
             neutral={neutral}
