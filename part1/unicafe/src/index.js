@@ -5,6 +5,9 @@ import './index.css';
 const Statistics = (props) => {
   return (
     <>
+      <p>good {props.good}</p>
+      <p>neutral {props.neutral}</p>
+      <p>bad {props.bad}</p>
       <p>all { props.all }</p>
       <p>average {props.average}</p>
       <p>positive {props.positive} %</p>
@@ -42,12 +45,19 @@ const App = () => {
       <button onClick={handleClickNeutral}>neutral</button>
       <button onClick={handleClickBad}>bad</button>
 
-      <h1>statics</h1>
-
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <Statistics all={all} average={average} positive={positive} />
+      <h1>Statistics</h1>
+      {all === 0
+        ? "No feedback given"
+        : <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad} 
+            all={all} 
+            average={average} 
+            positive={positive} 
+          />
+      }
+      
     </div>
   )
 
