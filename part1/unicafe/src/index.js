@@ -6,18 +6,39 @@ const Statistics = (props) => {
   
   return (
     <>
-      <Statistic text="good" value={props.good} />
-      <Statistic text="neutral" value={props.neutral} />
-      <Statistic text="bad" value={props.bad} />
-      <Statistic text="all" value={props.all} />
-      <Statistic text="average" value={props.average} />
-      <Statistic text="positive" value={props.positive} />
+      <table>
+        <tbody>
+          <tr>
+            <Statistic text="good" value={props.good} />
+          </tr>
+          <tr>
+            <Statistic text="neutral" value={props.neutral} />
+          </tr>
+          <tr>
+            <Statistic text="bad" value={props.bad} />
+          </tr>
+          <tr>
+            <Statistic text="all" value={props.all} />
+          </tr>
+          <tr>
+            <Statistic text="average" value={props.average} />
+          </tr>
+          <tr>
+            <Statistic text="positive" value={props.positive} />
+          </tr>
+        </tbody>
+      </table>
     </>
   )
 }
 
 const Statistic = (props) => {
-  return <p>{props.text} {props.value} {props.text === "positive" ? "%" : ""}</p>
+  return (
+    <>
+      <td>{props.text}</td>
+      <td>{props.value} {props.text === "positive" ? "%" : ""}</td>
+    </>
+  )
 }
 
 const Button = (props) => {
@@ -52,7 +73,7 @@ const App = () => {
   // console.log(bad);
 
   return (
-    <div>
+    <div className="main">
       <h1>give feedback</h1>
       <Button handleClick={handleClickGood} text="good" />
       <Button handleClick={handleClickNeutral} text="neutral" />
