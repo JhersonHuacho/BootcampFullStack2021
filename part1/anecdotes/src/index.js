@@ -18,8 +18,8 @@ const App = (props) => {
   // const points = Array.apply(null, new Array(anecdotes.length)).map(Number.prototype.valueOf,0);
   // const points = new Array(10).join('0').split('').map(parseFloat);
   
-  console.log("points", points);
-  console.log("copyPoints", copyPoints);
+  // console.log("points", points);
+  // console.log("copyPoints", copyPoints);
   
   const getRandomArbitrary = (min, max) => {
     return Math.floor(Math.random() * (max -min) + min);
@@ -34,12 +34,23 @@ const App = (props) => {
     copyPoints[selected] += 1;
   }
 
+  const mostVotes = () => {
+    const indiceArray = copyPoints.indexOf(Math.max(...copyPoints));
+    return indiceArray;
+  }
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       {props.anecdotes[selected]}
       <br/>
       <button onClick={handleVote}>vote</button>
       <button onClick={handleNext}>Next Anecdote</button>
+
+      <h1>Anecdote with most votes</h1>
+      <p>
+        {props.anecdotes[mostVotes()]}
+      </p>
     </div>
   )
 }
